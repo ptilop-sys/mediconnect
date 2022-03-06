@@ -32,7 +32,9 @@ const mainDrawer = ref(false);
 
     <!-- Mobile Navigation -->
     <v-navigation-drawer class="d-lg-none primary" temporary v-model="mainDrawer">
-      <slot name="mainDrawer"></slot>
+      <div class="d-flex flex-column">
+        <slot name="mainDrawer"></slot>
+      </div>
     </v-navigation-drawer>
   </nav>
 </template>
