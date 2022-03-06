@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 const mainDrawer = ref(false);
-const userDrawer = ref(false);
 </script>
 
 <template>
   <nav>
     <v-toolbar flat app>
       <v-btn class="d-lg-none" icon="mdi-menu" @click="mainDrawer = !mainDrawer"></v-btn>
+      <!-- Desktop Navibation -->
       <v-toolbar-title>
         <router-link to="/">
           <img class="img-brand" src="../assets/icons/navbar.svg" alt="mediconnect icon" />
@@ -17,15 +17,22 @@ const userDrawer = ref(false);
         <slot name="mainDrawer"></slot>
       </v-flex>
       <v-spacer></v-spacer>
-      <v-btn icon="mdi-account" color="grey" @click="userDrawer = !userDrawer"></v-btn>
+      <v-menu bottom left>
+        <template v-slot:activator="{ props }">
+          <v-btn dark icon v-bind="props">
+            <v-icon>mdi-account</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <slot name="userDrawer"></slot>
+        </v-list>
+      </v-menu>
     </v-toolbar>
 
+    <!-- Mobile Navigation -->
     <v-navigation-drawer class="d-lg-none primary" temporary v-model="mainDrawer">
       <slot name="mainDrawer"></slot>
-    </v-navigation-drawer>
-
-    <v-navigation-drawer temporary v-model="userDrawer" class="primary" position="right">
-      <slot name="userDrawer"></slot>
     </v-navigation-drawer>
   </nav>
 </template>

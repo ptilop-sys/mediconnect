@@ -1,27 +1,24 @@
 <script lang="ts" setup>
 import Navbar from "./components/Navbar.vue";
+import { useAuth } from "./database/firebase";
+
+const { isLogin, signOut } = useAuth()
 </script>
 
 <template>
   <v-app>
     <Navbar>
       <template v-slot:mainDrawer>
-        <v-btn>
-          <router-link to="/">Home</router-link>
-        </v-btn>
-        <v-btn>
-          <router-link to="/about">About</router-link>
-        </v-btn>
-        <v-btn>
-          <router-link to="/doctors">Doctors</router-link>
-        </v-btn>
-        <v-btn>
-          <router-link to="/hospitals">Hospitals</router-link>
-        </v-btn>
+        <v-btn @click="$router.push('/')">Home</v-btn>
+        <v-btn @click="$router.push('/about')">About</v-btn>
+        <v-btn @click="$router.push('/doctors')">Doctors</v-btn>
+        <v-btn @click="$router.push('/hospitals')">Hospitals</v-btn>
+        <v-btn @click="$router.push('/apply')">Apply Your Hospital</v-btn>
       </template>
       <template v-slot:userDrawer>
-        <v-btn>Sign In</v-btn>
-        <v-btn>Register</v-btn>
+        <v-list-item v-show="!isLogin" @click="$router.push('/login')">Sign In</v-list-item>
+        <v-list-item v-show="!isLogin" @click="$router.push('/register')">Register</v-list-item>
+        <v-list-item v-show="isLogin" @click="signOut">Sign Out</v-list-item>
       </template>
     </Navbar>
     <v-main>

@@ -33,18 +33,10 @@ async function testFunction() {
       </div>
       <v-spacer></v-spacer>
       <div class="d-flex flex-column flex-lg-row justify-lg-space-around">
-        <v-btn>
-          <router-link to="/about">About Us</router-link>
-        </v-btn>
-        <v-btn>
-          <router-link to="/hospitals">Look for Hospitals Near You</router-link>
-        </v-btn>
-        <v-btn>
-          <router-link to="/hospitals">Apply Your Medical Center or Hospital</router-link>
-        </v-btn>
-        <v-btn>
-          <router-link to="/register">Register as Patient</router-link>
-        </v-btn>
+        <v-btn @click="$router.push('/about')">About Us</v-btn>
+        <v-btn @click="$router.push('/hospitals')">Look for Hospitals Near You</v-btn>
+        <v-btn @click="$router.push('/apply')">Apply Your Medical Center or Hospital</v-btn>
+        <v-btn @click="$router.push('/register')">Register as Patient</v-btn>
       </div>
       <v-col cols="12">
         <v-btn elevation="3" rounded="pill" color="primary" @click="testFunction">Testing</v-btn>
