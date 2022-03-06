@@ -28,7 +28,10 @@ const { isLogin, signOut } = useAuth()
 </template>
 
 <style>
-#app {
-  background: url("./assets/background.png");
+body {
+  background-image: url("./assets/background.png");
+}
+.v-theme--light {
+  --v-theme-background: 255, 255, 255, 0 !important;
 }
 </style>
