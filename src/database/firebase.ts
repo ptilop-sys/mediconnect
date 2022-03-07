@@ -10,8 +10,14 @@ import {
   query,
   serverTimestamp,
 } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+} from "firebase/auth";
 import { computed, onUnmounted, ref } from "vue";
+import { useRouter } from "vue-router";
 
 initializeApp({
   apiKey: <string>import.meta.env.VITE_APIKEY,
@@ -26,10 +32,11 @@ initializeApp({
 export const firestore = getFirestore();
 
 const auth = getAuth();
+const router = useRouter();
 
 export function useAuth() {
   const user = ref();
-  const unsubscribe = auth.onAuthStateChanged((_user) => (user.value = _user));
+  const unsubscribe = onAuthStateChanged(auth, (_user) => (user.value = _user));
   onUnmounted(unsubscribe);
 
   const isLogin = computed(() => user.value !== null);
@@ -66,7 +73,7 @@ export function useChat() {
 
   const { user, isLogin } = useAuth();
   const sendMessage = (text: string) => {
-    // if (!isLogin.value) return;
+    if (!isLogin.value) return;
 
     const { photoURL, uid, displayName } = user.value;
 

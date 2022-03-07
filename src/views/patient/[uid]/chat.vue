@@ -2,7 +2,7 @@
   <v-container class="mt-5">
     <div class="mx-5">
       <Message
-        v-for="{ id, content, userPhotoURL, userName, userId } in messages"
+        v-for="{ id, content, userName, userId } in messages"
         :key="id"
         :name="userName"
         :sender="userId === user?.uid"

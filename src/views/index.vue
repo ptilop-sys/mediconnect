@@ -16,44 +16,38 @@ async function testFunction() {
 
 <template>
   <v-container>
-    <div class="d-flex flex-column justify-center">
-      <v-row>
+    <v-card class="px-10 py-10">
+      <div class="d-flex flex-column justify-space-around">
+        <v-row>
+          <v-spacer></v-spacer>
+          <img
+            class="justify-center img-size"
+            src="../assets/icons/hero.png"
+            alt="mediconnect main logo"
+          />
+          <v-spacer></v-spacer>
+        </v-row>
         <v-spacer></v-spacer>
-        <img
-          class="justify-center img-size"
-          src="../assets/icons/hero.png"
-          alt="mediconnect main logo"
-        />
+        <div class="d-flex flex-column align-self-center">
+          <h1 class="spacer">Welcome to MediConnect!</h1>
+          <p class="spacer">Where we help you connect to Medical Centers quickly!</p>
+        </div>
         <v-spacer></v-spacer>
-      </v-row>
-      <v-spacer></v-spacer>
-      <div class="d-flex flex-column align-self-center">
-        <h1>Welcome to MediConnect!</h1>
-        <p>Where we help you connect to Medical Centers quickly!</p>
+        <div class="d-flex flex-column flex-lg-row justify-lg-space-around spacer">
+          <v-btn @click="$router.push('/about')">About Us</v-btn>
+          <v-btn @click="$router.push('/hospitals')">Look for Hospitals Near You</v-btn>
+          <v-btn @click="$router.push('/apply')">Apply Your Medical Center or Hospital</v-btn>
+          <v-btn @click="$router.push('/register')">Register as Patient</v-btn>
+        </div>
       </div>
-      <v-spacer></v-spacer>
-      <div class="d-flex flex-column flex-lg-row justify-lg-space-around">
-        <v-btn>
-          <router-link to="/about">About Us</router-link>
-        </v-btn>
-        <v-btn>
-          <router-link to="/hospitals">Look for Hospitals Near You</router-link>
-        </v-btn>
-        <v-btn>
-          <router-link to="/hospitals">Apply Your Medical Center or Hospital</router-link>
-        </v-btn>
-        <v-btn>
-          <router-link to="/register">Register as Patient</router-link>
-        </v-btn>
-      </div>
-      <v-col cols="12">
-        <v-btn elevation="3" rounded="pill" color="primary" @click="testFunction">Testing</v-btn>
-      </v-col>
-    </div>
+    </v-card>
   </v-container>
 </template>
 
-<style>
+<style scoped>
+.spacer {
+  padding: 1rem 0;
+}
 @media screen and (max-width: 1264px) {
   .img-size {
     width: 250px;

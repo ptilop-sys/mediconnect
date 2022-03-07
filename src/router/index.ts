@@ -1,3 +1,4 @@
+import { getAuth } from "firebase/auth";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 import routes from "~pages";
@@ -33,6 +34,18 @@ import routes from "~pages";
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.name?.toString().includes("patient")) {
+    const auth = getAuth();
+
+    if (to.params.uid !== auth.currentUser?.uid) {
+      next("/login");
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;
