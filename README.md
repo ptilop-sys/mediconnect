@@ -1,5 +1,7 @@
 # Mediconnect
 
+![main logo](https://raw.githubusercontent.com/ptilop-sys/mediconnect/main/src/assets/icons/hero.png)
+
 A Medical Web App for Filipinos to connect to Local Hospitals nearby them.
 
 ## Installation
