@@ -6,18 +6,26 @@ const mainDrawer = ref(false);
 <template>
   <nav>
     <v-toolbar flat app>
-      <v-btn class="d-lg-none" icon="mdi-menu" @click="mainDrawer = !mainDrawer"></v-btn>
+      <v-btn
+        class="d-lg-none"
+        icon="mdi-menu"
+        @click="mainDrawer = !mainDrawer"
+      ></v-btn>
       <!-- Desktop Navibation -->
       <v-toolbar-title>
         <router-link to="/">
-          <img class="img-brand" src="../assets/icons/navbar.svg" alt="mediconnect icon" />
+          <img
+            class="img-brand"
+            src="../assets/icons/navbar.svg"
+            alt="mediconnect icon"
+          />
         </router-link>
       </v-toolbar-title>
       <v-flex class="d-none d-lg-block">
         <slot name="mainDrawer"></slot>
       </v-flex>
       <v-spacer></v-spacer>
-      <v-menu bottom left>
+      <v-menu top offset-x="true">
         <template v-slot:activator="{ props }">
           <v-btn dark icon v-bind="props">
             <v-icon>mdi-account</v-icon>
@@ -31,10 +39,12 @@ const mainDrawer = ref(false);
     </v-toolbar>
 
     <!-- Mobile Navigation -->
-    <v-navigation-drawer class="d-lg-none primary" temporary v-model="mainDrawer">
-      <div class="d-flex flex-column">
-        <slot name="mainDrawer"></slot>
-      </div>
+    <v-navigation-drawer
+      class="d-lg-none primary"
+      temporary
+      v-model="mainDrawer"
+    >
+      <slot name="mainDrawer"></slot>
     </v-navigation-drawer>
   </nav>
 </template>

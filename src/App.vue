@@ -2,7 +2,7 @@
 import Navbar from "./components/Navbar.vue";
 import { useAuth } from "./database/firebase";
 
-const { isLogin, signOut } = useAuth()
+const { isLogin, signOut } = useAuth();
 </script>
 
 <template>
@@ -16,8 +16,12 @@ const { isLogin, signOut } = useAuth()
         <v-btn @click="$router.push('/apply')">Apply Your Hospital</v-btn>
       </template>
       <template v-slot:userDrawer>
-        <v-list-item v-show="!isLogin" @click="$router.push('/login')">Sign In</v-list-item>
-        <v-list-item v-show="!isLogin" @click="$router.push('/register')">Register</v-list-item>
+        <v-list-item v-show="!isLogin" @click="$router.push('/login')"
+          >Sign In</v-list-item
+        >
+        <v-list-item v-show="!isLogin" @click="$router.push('/register')"
+          >Register</v-list-item
+        >
         <v-list-item v-show="isLogin" @click="signOut">Sign Out</v-list-item>
       </template>
     </Navbar>
